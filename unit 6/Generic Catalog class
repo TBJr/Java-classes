@@ -1,0 +1,45 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Catalog<T extends LibraryItem> {
+    private List<T> items;
+
+    public Catalog() {
+        this.items = new ArrayList<>();
+    }
+
+    public void addItem(T item) {
+        items.add(item);
+    }
+
+    public void removeItem(String itemID) {
+        T itemToRemove = null;
+        for (T item : items) {
+            if (item.getItemID().equals(itemID)) {
+                itemToRemove = item;
+                break;
+            }
+        }
+        if (itemToRemove != null) {
+            items.remove(itemToRemove);
+        } else {
+            System.out.println("Item with ID " + itemID + " not found.");
+        }
+    }
+
+    public T getItem(String itemID) {
+        for (T item : items) {
+            if (item.getItemID().equals(itemID)) {
+                return item;
+            }
+        }
+        System.out.println("Item with ID " + itemID + " not found.");
+        return null;
+    }
+
+    public void displayItems() {
+        for (T item : items) {
+            System.out.println(item);
+        }
+    }
+}

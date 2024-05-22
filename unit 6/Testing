@@ -1,0 +1,29 @@
+public class LibraryCatalogTest {
+    public static void main(String[] args) {
+        Catalog<LibraryItem> catalog = new Catalog<>();
+
+        // Adding items
+        catalog.addItem(new LibraryItem("Java Programming", "John Doe", "B001"));
+        catalog.addItem(new LibraryItem("Data Structures", "Jane Smith", "B002"));
+
+        // Display items
+        System.out.println("Catalog after adding items:");
+        catalog.displayItems();
+
+        // Removing an item
+        catalog.removeItem("B001");
+        System.out.println("\nCatalog after removing an item:");
+        catalog.displayItems();
+
+        // Viewing an itemS
+        System.out.println("\nViewing an item:");
+        LibraryItem item = catalog.getItem("B002");
+        if (item != null) {
+            System.out.println(item);
+        }
+
+        // Trying to remove a non-existent item
+        System.out.println("\nAttempting to remove a non-existent item:");
+        catalog.removeItem("B003");
+    }
+}
